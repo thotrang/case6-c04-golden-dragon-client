@@ -11,12 +11,15 @@ function App() {
   }
   return (
     <div>
-      <button onClick={handelClick}>Click</button>
-      {listUser && <ul>
-          {listUser.map((user) =>(
-            <li>{user.name}</li>
-          ))}
-      </ul>}
+      {/*<button onClick={handelClick}>Click</button>*/}
+      {/*{listUser && <ul>*/}
+      {/*    {listUser.map((user) =>(*/}
+      {/*      <li>{user.name}</li>*/}
+      {/*    ))}*/}
+      {/*</ul>}*/}
+      <h1 className="text-xl color= accent-red-500 ">
+        Hello world!
+      </h1>
     </div>
   );
 }
