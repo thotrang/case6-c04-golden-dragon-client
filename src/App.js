@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
 
   return (
-    <BrowserRouter>
+      <BrowserRouter>
       <Routes>
         <Route path="/login"></Route>
         <Route path="/register"></Route>
