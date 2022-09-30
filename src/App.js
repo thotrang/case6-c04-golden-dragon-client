@@ -1,26 +1,25 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Product from "./pages/Product";
-import {useDispatch} from "react-redux";
-import {getAllProduct} from "./service/sellerService";
-
+import ListStaff from "./components/user/listStaff/ListStaff";
+import ListUser from "./components/user/listUser/ListUser";
+import UserDetail from "./components/user/userDetail/UserDetail";
+import Admin from "./pages/admin/Admin";
 function App() {
 
-
   return (
-    //   <BrowserRouter>
-    //   <Routes>
-    //     <Route path="/login"></Route>
-    //     <Route path="/register"></Route>
-    //     <Route path="/home"></Route>
-    //     <Route path="/"></Route>
-    //     <Route path="/admin"></Route>
-    //     <Route path="/seller"></Route>
-    //     <Route path="/accountant"></Route>
-    //   </Routes>
-    // </BrowserRouter>
-      <div>
-        <Product/>
-      </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/login"></Route>
+        <Route path="/register"></Route>
+        <Route path="/home"></Route>
+        <Route path="/"></Route>
+        <Route path="/admin" element={<Admin></Admin>}>
+            <Route path = "listUser" element = {<ListUser></ListUser>}></Route>
+            <Route path = "listStaff" element = {<ListStaff></ListStaff>}></Route>
+            <Route path = "detail/:id" element = {<UserDetail></UserDetail>}></Route>
+        </Route>
+        <Route path="/accountant"></Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
