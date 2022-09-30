@@ -12,7 +12,7 @@ import {
     searchStaffSlice
 } from "../reducer/slice/userSlice";
 
-const baseURL = "https://localhost:3000/";
+const baseURL = "http://localhost:3000";
 
 export const getAllUser = async (dispatch) => {
     const res = await customAxios.get(`${baseURL}/user`)
