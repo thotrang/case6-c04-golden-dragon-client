@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import {getAllProduct} from "../../service/sellerService";
-import {Link} from "react-router-dom";
 const ListProduct = () => {
     const dispatch = useDispatch()
     const products = useSelector(state => state.productReducer.products)
@@ -58,19 +57,6 @@ const ListProduct = () => {
                             </button>
                         </div>
                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
                     <table className="min-w-full leading-normal ">
                         <thead>
                         <tr>
