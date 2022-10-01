@@ -8,4 +8,9 @@ export const getAllProduct = async (dispatch) => {
     dispatch(getAllProductSlice(res.data))
 
 
+
+}
+export const getDetailProduct = async (dispatch)=>{
+    const  res = await  customAxios.get(`${baseURL}/admin/products/:id`)
+dispatch()
 }

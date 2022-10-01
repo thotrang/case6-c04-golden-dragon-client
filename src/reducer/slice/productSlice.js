@@ -10,6 +10,7 @@ const productSlice = createSlice({
         getAllProductSlice: (state,action) =>{
             state.products = action.payload
         }
+
     }
 })
 

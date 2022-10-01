@@ -4,6 +4,8 @@ import ListUser from "./components/user/listUser/ListUser";
 import UserDetail from "./components/user/userDetail/UserDetail";
 import Admin from "./pages/admin/Admin";
 import ListProduct from "./components/product/listProduct";
+import CreateProduct from "./components/product/createProduct";
+import UpdateProduct from "./components/product/updateProduct";
 function App() {
 
   return (
@@ -19,7 +21,14 @@ function App() {
             <Route path = "detail/:id" element = {<UserDetail></UserDetail>}></Route>
         </Route>
         <Route path="/accountant"></Route>
-        <Route path="/seller/product" element={<ListProduct/>}></Route>
+        <Route path="/seller" >
+             <Route path="create" element = {<CreateProduct/>}></Route>
+            <Route path="update/:id" element = {<UpdateProduct/>}></Route>
+            <Route path="products" element = {<ListProduct/>}></Route>
+
+
+        </Route>
+
       </Routes>
     </BrowserRouter>
   );
