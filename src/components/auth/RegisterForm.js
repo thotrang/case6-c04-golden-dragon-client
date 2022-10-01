@@ -18,6 +18,40 @@ function RegisterForm() {
     });
 
     const { userName, password, confirmPassword, name, email, phone, address } = registerForm;
+    const [formErrors, setFormErrors] = useState({});
+
+    const validate = (values) => {
+        const errors = {};
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
+        if (!values.userName) {
+            errors.userName = 'Username is required!';
+        } else if (values.userName.length < 4) {
+            errors.password = 'UserName must be more than 4 characters';
+        }
+        if (!values.password) {
+            errors.password = 'Password is required';
+        } else if (values.password.length < 6) {
+            errors.password = 'Password must be more than 6 characters';
+        }
+        if (!values.confirmPassword) {
+            errors.confirmPassword = 'ConfirmPassword is required';
+        }
+        if (!values.name) {
+            errors.name = 'Name is required!';
+        }
+        if (!values.email) {
+            errors.email = 'Email is required';
+        } else if (!regex.test(values.email)) {
+            errors.email = 'This is not a valid email format!';
+        }
+        if (!values.phone) {
+            errors.phone = 'Phone is required';
+        }
+        if (!values.address) {
+            errors.address = 'Address is required';
+        }
+        return errors;
+    };
 
     const onChangeRegisterForm = (event) =>
         setRegisterForm({ ...registerForm, [event.target.name]: event.target.value });
@@ -25,6 +59,8 @@ function RegisterForm() {
     const register = (e) => {
         e.preventDefault();
         console.warn(registerForm);
+        setFormErrors(validate(registerForm));
+
         axios
             .post(`${apiUrl}/register`, registerForm)
             .then(function (response) {
@@ -71,6 +107,7 @@ function RegisterForm() {
                                         onChange={onChangeRegisterForm}
                                     />
                                 </div>
+                                <p>{formErrors.userName}</p>
                                 <div>
                                     <label htmlFor="password" className="sr-only">
                                         Password
@@ -87,10 +124,8 @@ function RegisterForm() {
                                         onChange={onChangeRegisterForm}
                                     />
                                 </div>
+                                <p>{formErrors.password}</p>
                                 <div>
-                                    {/* <label htmlFor="password" className="sr-only">
-                                        Confirm Password
-                                    </label> */}
                                     <input
                                         id="confirmPassword"
                                         name="confirmPassword"
@@ -103,10 +138,8 @@ function RegisterForm() {
                                         onChange={onChangeRegisterForm}
                                     />
                                 </div>
+                                <p>{formErrors.confirmPassword}</p>
                                 <div>
-                                    {/* <label htmlFor="password" className="sr-only">
-                                        Password
-                                    </label> */}
                                     <input
                                         id="name"
                                         name="name"
@@ -119,9 +152,10 @@ function RegisterForm() {
                                         onChange={onChangeRegisterForm}
                                     />
                                 </div>
+                                <p>{formErrors.name}</p>
                                 <div>
                                     <label htmlFor="password" className="sr-only">
-                                        Password
+                                        Email
                                     </label>
                                     <input
                                         id="email"
@@ -135,9 +169,10 @@ function RegisterForm() {
                                         onChange={onChangeRegisterForm}
                                     />
                                 </div>
+                                <p>{formErrors.email}</p>
                                 <div>
                                     <label htmlFor="password" className="sr-only">
-                                        Password
+                                        Phone
                                     </label>
                                     <input
                                         id="phone"
@@ -151,9 +186,10 @@ function RegisterForm() {
                                         onChange={onChangeRegisterForm}
                                     />
                                 </div>
+                                <p>{formErrors.phone}</p>
                                 <div>
                                     <label htmlFor="password" className="sr-only">
-                                        Password
+                                        Address
                                     </label>
                                     <input
                                         id="address"
@@ -167,6 +203,7 @@ function RegisterForm() {
                                         onChange={onChangeRegisterForm}
                                     />
                                 </div>
+                                <p>{formErrors.address}</p>
                             </div>
                             <div>
                                 <button
