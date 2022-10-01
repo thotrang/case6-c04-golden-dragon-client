@@ -9,8 +9,8 @@ import Footer from './layouts/footer/Footer';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
-    <Footer />
-    {/* < Navbar /> */}
+    {/* <Footer /> */}
+    < Navbar />
     {/* <App /> */}
   </Provider>
 );
