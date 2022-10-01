@@ -1,3 +1,6 @@
+import LoginForm from './components/auth/LoginForm';
+import RegisterForm from './components/auth/RegisterForm';
+
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ListUser from "./components/user/listUser/ListUser";
 import UserDetail from "./components/user/userDetail/UserDetail";
@@ -23,8 +26,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login"></Route>
-        <Route path="/register"></Route>
+        <Route path="/login" element={<LoginForm />}></Route>
+        <Route path="/register" element={<RegisterForm />}></Route>
         <Route path="/home"></Route>
         <Route path="/"></Route>
         <Route path="/admin" element={<Admin users = {listUser}></Admin>}>
@@ -46,6 +49,7 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
+
 }
 
 export default App;
