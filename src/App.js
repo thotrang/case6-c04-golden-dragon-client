@@ -2,6 +2,9 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ListUser from "./components/user/listUser/ListUser";
 import UserDetail from "./components/user/userDetail/UserDetail";
 import Admin from "./pages/admin/Admin";
+import ListProduct from "./components/product/listProduct";
+import CreateProduct from "./components/product/createProduct";
+import UpdateProduct from "./components/product/updateProduct";
 import AddStaff from "./components/user/addStaff/AddStaff";
 import { getAllUser, getAllStaff } from "./service/userService"
 import { useEffect } from "react"
@@ -32,6 +35,14 @@ function App() {
           <Route path="addStaff" element={<AddStaff></AddStaff>}></Route>
         </Route>
         <Route path="/accountant"></Route>
+        <Route path="/seller" >
+             <Route path="create" element = {<CreateProduct/>}></Route>
+            <Route path="update/:id" element = {<UpdateProduct/>}></Route>
+            <Route path="products" element = {<ListProduct/>}></Route>
+
+
+        </Route>
+
       </Routes>
     </BrowserRouter>
   );
