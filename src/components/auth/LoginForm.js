@@ -28,14 +28,21 @@ function LoginForm() {
 
     const login = (e) => {
         e.preventDefault();
-        console.warn(loginForm);
         setFormErrors(validate(loginForm));
         axios
             .post(`${apiUrl}/login`, loginForm)
             .then(function (response) {
                 console.log(response.data.message);
                 localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken);
-                navigate('/home');
+                if(response.data.user.roleId.name == "user"){
+                    navigate('/home');
+                }else if(response.data.user.roleId.name == "admin"){
+                    navigate('/admin')
+                }else if(response.data.user.roleId.name == "seller"){
+                    navigate('/seller')
+                }else if(response.data.user.roleId.name == "acountant"){
+                    navigate('/acountant')
+                }
                 return response.data.message;
             })
             .catch(function (error) {
