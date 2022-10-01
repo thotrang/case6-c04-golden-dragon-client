@@ -3,10 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { apiUrl, LOCAL_STORAGE_TOKEN_NAME } from '../../context/constants';
 import axios from 'axios';
+import { useDispatch } from 'react-redux';
+import { getUserInfo } from '../../reducer/slice/userSlice';
 
 function LoginForm() {
     const navigate = useNavigate();
-
+    const dispatch = useDispatch()
     const [loginForm, setLoginForm] = useState({
         userName: '',
         password: '',
@@ -34,6 +36,7 @@ function LoginForm() {
             .then(function (response) {
                 console.log(response.data.message);
                 localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken);
+                dispatch(getUserInfo(response.data.user))
                 if(response.data.user.roleId.name == "user"){
                     navigate('/home');
                 }else if(response.data.user.roleId.name == "admin"){

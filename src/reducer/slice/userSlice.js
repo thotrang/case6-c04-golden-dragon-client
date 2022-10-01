@@ -3,12 +3,16 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     staffs: [],
     users: [],
-    user: {}
+    user: {},
+    userInfo:{}
 }
 const userSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
+        getUserInfo: (state, action) => {
+            state.userInfo = action.payload
+        },
         getAllStaffSlice: (state, action) => {
             state.staffs = action.payload
         },
@@ -53,7 +57,8 @@ export const {
     updateRoleUserSlice,
     updateUserSlice,
     searchUserSlice,
-    searchStaffSlice
+    searchStaffSlice,
+    getUserInfo
 } = userSlice.actions;
 
 export default userSlice.reducer;

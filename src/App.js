@@ -23,6 +23,8 @@ function App() {
 
   const listUser = useSelector((state) => state.userReducer.users)
   const listStaff = useSelector((state) => state.userReducer.staffs)
+  const userInfo = useSelector((state) => state.userReducer.userInfo)
+
   return (
     <BrowserRouter>
       <Routes>
@@ -30,7 +32,7 @@ function App() {
         <Route path="/register" element={<RegisterForm />}></Route>
         <Route path="/home"></Route>
         <Route path="/"></Route>
-        <Route path="/admin" element={<Admin users = {listUser}></Admin>}>
+        <Route path="/admin" element={<Admin users = {listUser} userInfo = {userInfo}></Admin>}>
           <Route path="listUser" element={<ListUser users = {listUser} model = {'user'}></ListUser>}></Route>
           <Route path="listStaff" element={<ListUser users = {listStaff} model = {'staff'}></ListUser>}></Route>
           <Route path="detail/:id" element={<UserDetail></UserDetail>}></Route>
