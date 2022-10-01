@@ -3,6 +3,7 @@ import ListStaff from "./components/user/listStaff/ListStaff";
 import ListUser from "./components/user/listUser/ListUser";
 import UserDetail from "./components/user/userDetail/UserDetail";
 import Admin from "./pages/admin/Admin";
+import ListProduct from "./components/product/listProduct";
 function App() {
 
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path = "detail/:id" element = {<UserDetail></UserDetail>}></Route>
         </Route>
         <Route path="/accountant"></Route>
+        <Route path="/seller/product" element={<ListProduct/>}></Route>
       </Routes>
     </BrowserRouter>
   );

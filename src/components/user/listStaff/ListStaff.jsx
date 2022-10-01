@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { getAllStaff,getDetailUser } from "../../../service/userService"
+import { getAllStaff} from "../../../service/userService"
 import {Link, useNavigate} from "react-router-dom"
 
 function ListStaff() {
-    const navigate = useNavigate()
     const [isList, setIsList] = useState(false)
     const listStaff = useSelector((state) => state.userReducer.users)
     const dispatch = useDispatch()
@@ -12,10 +11,7 @@ function ListStaff() {
         getAllStaff(dispatch)
         setIsList(true)
     }, [])
-    const handelDetail = (id) => {
-        navigate(`/admin/detail/${id}`)
-        getDetailUser(id,dispatch)
-    }
+
     return (
         <div>
             <table className="min-w-full leading-normal">
@@ -60,7 +56,7 @@ function ListStaff() {
                                     src={user.avatar}
                                     alt=""
                                 />
-                                <p  style={{cursor:"pointer"}} onClick={()=>{handelDetail(user._id)}}>{user.name}</p></td>
+                                <Link>{user.name}</Link></td>
                             <td
                                 className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
                             >{user.roleId.name}</td>

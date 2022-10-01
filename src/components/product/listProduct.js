@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {getAllProduct} from "../service/sellerService";
+import {getAllProduct} from "../../service/sellerService";
 import {Link} from "react-router-dom";
-// import "../assests/img/KL.png"
-const Product = () => {
+const ListProduct = () => {
     const dispatch = useDispatch()
     const products = useSelector(state => state.productReducer.products)
     const [isProductYet, setIsProductYet] = useState(false)
@@ -14,23 +13,16 @@ const Product = () => {
     }, [])
     return (
         <div>
-
-
-
-
-
-
-            <div> <header className=" top-2 pb-5 bg-amber-800	 border-b border-slate-400 z-30
+            <div> <header className=" top-2 pb-5 bg-gradient-to-r from-emerald-800  to-emerald-400	  z-30
             ">
                 <img src="/assests/img/KL.png" className="object-fill h-50 w-80"/>
-                {/*<ul className="pl-9 mt-1"><li className="font-extrabold  text-transparent text-5xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 font-lg mb-1 ">Kim Long</li></ul>*/}
 
             </header></div>
             <div className={'flex'}>
                 <div
                     id="sidebar"
 
-                    className={"flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-gradient-to-b from-white  to-purple-400 p-4 transition-all duration-200 ease-in-out translate-x-0"}
+                    className={"flex flex-col absolute z-40 left-0 top-0 lg:static lg:left-auto lg:top-auto lg:translate-x-0 h-screen overflow-y-scroll lg:overflow-y-auto no-scrollbar w-64 lg:w-20 lg:sidebar-expanded:!w-64 2xl:!w-64 shrink-0 bg-gradient-to-b from-emerald-800  to-emerald-400 p-4 transition-all duration-200 ease-in-out translate-x-0"}
                 >
 
 
@@ -51,7 +43,9 @@ const Product = () => {
                 <ul className="pl-9 mt-1"><li className="font-extrabold text-transparent text-2xl bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 font-lg mb-1 last:mb-0"></li></ul>
                 </div>
                 <div className={'w-full px-16'}>
-                    <h1 className="text-5xl font-semibold leading-tight">ANH YẾU NHƯNG ANH EM ĐÔNG </h1>
+                    <div><h1 className="text-5xl font-semibold leading-tight">List products
+                        <button className="absolute  px-2  bg-blue-600 opacity-50 rounded-full right-8">Add new product</button></h1>
+                        </div>
                     <table className="min-w-full leading-normal ">
                         <thead>
                         <tr>
@@ -94,4 +88,4 @@ const Product = () => {
     );
 };
 
-export default Product;
+export default ListProduct;
