@@ -21,7 +21,7 @@ function LoginForm() {
             errors.userName = 'Username is required!';
         }
         if (!values.password) {
-            errors.password = 'Password is required';
+            errors.password = 'Password is required!';
         }
         return errors;
     };
@@ -33,13 +33,14 @@ function LoginForm() {
         axios
             .post(`${apiUrl}/login`, loginForm)
             .then(function (response) {
-                console.log(response.data);
+                console.log(response.data.message);
                 localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken);
                 navigate('/home');
-                return response.data;
+                return response.data.message;
             })
             .catch(function (error) {
                 console.log(error.response.data.message);
+                document.getElementById('err').innerHTML = error.response.data.message;
             });
     };
     return (
@@ -74,7 +75,7 @@ function LoginForm() {
                                     onChange={onChangeLoginForm}
                                 />
                             </div>
-                            <p>{formErrors.userName}</p>
+                            <p className="text-red-700">{formErrors.userName}</p>
                             <div>
                                 <label htmlFor="password" className="sr-only">
                                     Password
@@ -91,7 +92,7 @@ function LoginForm() {
                                     onChange={onChangeLoginForm}
                                 />
                             </div>
-                            <p>{formErrors.password}</p>
+                            <p className="text-red-700">{formErrors.password}</p>
                         </div>
                         <div className="flex justify-between items-center mb-6">
                             <div className="form-group form-check">
@@ -122,6 +123,7 @@ function LoginForm() {
                                 </span>
                                 Sign in
                             </button>
+                            <p className="text-red-700" id="err"></p>
                         </div>
                         <div className="flex items-center my-4 before:flex-1 before:border-t before:border-gray-300 before:mt-0.5 after:flex-1 after:border-t after:border-gray-300 after:mt-0.5">
                             <p className="text-center font-semibold mx-4 mb-0">OR</p>

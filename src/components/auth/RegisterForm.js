@@ -30,8 +30,8 @@ function RegisterForm() {
         }
         if (!values.password) {
             errors.password = 'Password is required';
-        } else if (values.password.length < 6) {
-            errors.password = 'Password must be more than 6 characters';
+        } else if (values.password.length < 4) {
+            errors.password = 'Password must be more than 4 characters';
         }
         if (!values.confirmPassword) {
             errors.confirmPassword = 'ConfirmPassword is required';
@@ -71,6 +71,7 @@ function RegisterForm() {
             })
             .catch(function (error) {
                 console.log(error.response.data.message);
+                document.getElementById('err').innerHTML = error.response.data.message;
             });
     };
 
@@ -136,7 +137,7 @@ function RegisterForm() {
                                                 onChange={onChangeRegisterForm}
                                             />
                                         </div>
-                                        <p>{formErrors.userName}</p>
+                                        <p className="text-red-700">{formErrors.userName}</p>
                                     </div>
                                     <div className="w-1/2 ml-0">
                                         <div>
@@ -152,7 +153,7 @@ function RegisterForm() {
                                                 onChange={onChangeRegisterForm}
                                             />
                                         </div>
-                                        <p>{formErrors.name}</p>
+                                        <p className="text-red-700">{formErrors.name}</p>
                                     </div>
                                 </div>
 
@@ -171,7 +172,7 @@ function RegisterForm() {
                                                 onChange={onChangeRegisterForm}
                                             />
                                         </div>
-                                        <p>{formErrors.password}</p>
+                                        <p className="text-red-700">{formErrors.password}</p>
                                     </div>
                                     <div className="w-1/2 ml-0">
                                         <div>
@@ -187,7 +188,7 @@ function RegisterForm() {
                                                 onChange={onChangeRegisterForm}
                                             />
                                         </div>
-                                        <p>{formErrors.confirmPassword}</p>
+                                        <p className="text-red-700">{formErrors.confirmPassword}</p>
                                     </div>
                                 </div>
 
@@ -207,7 +208,7 @@ function RegisterForm() {
                                         onChange={onChangeRegisterForm}
                                     />
                                 </div>
-                                <p>{formErrors.email}</p>
+                                <p className="text-red-700">{formErrors.email}</p>
                                 <div>
                                     <label htmlFor="password" className="sr-only">
                                         Phone
@@ -224,7 +225,7 @@ function RegisterForm() {
                                         onChange={onChangeRegisterForm}
                                     />
                                 </div>
-                                <p>{formErrors.phone}</p>
+                                <p className="text-red-700">{formErrors.phone}</p>
                                 <div>
                                     <label htmlFor="password" className="sr-only">
                                         Address
@@ -241,8 +242,9 @@ function RegisterForm() {
                                         onChange={onChangeRegisterForm}
                                     />
                                 </div>
-                                <p>{formErrors.address}</p>
+                                <p className="text-red-700">{formErrors.address}</p>
                             </div>
+                            <p className="text-red-700" id="err"></p>
                             <div>
                                 <button
                                     type="submit"
