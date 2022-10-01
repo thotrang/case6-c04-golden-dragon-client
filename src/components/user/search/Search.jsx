@@ -1,11 +1,11 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function Search({ users }) {
+function Search({ list , model}) {
     const [search, setSearch] = useState('')
     const handleChange = (e) => {
         setSearch(e.target.value)
     }
-    console.log(users);
     return (
         <div>
             <input
@@ -15,19 +15,31 @@ function Search({ users }) {
             ></input>
             <button>Click</button>
             <div>
-                {
-                users
-                .filter((user)=>{
+                {/* search user */}
+                {model == "user" && list && list.filter((item)=>{
                     if(search == ""){
                         return ;
                     }
-                    else if(user.name.toLowerCase().inCludes(search.toLowerCase())){
-                        return user
+                    else if(item.name.toLowerCase().includes(search.toLowerCase())){
+                        return item
                     }
                 })
-                .map((user) => (
-                    <li>{user.name}</li>
+                .map((item) => (
+                    <Link>{list.name}</Link>
                 ))}
+                {/* search product */}
+                {model == "product" && list && list.filter((item)=>{
+                    if(search == ""){
+                        return ;
+                    }
+                    else if(item.name.toLowerCase().includes(search.toLowerCase())){
+                        return item
+                    }
+                })
+                .map((item) => (
+                    <Link>{list.name}</Link>
+                ))}
+               
             </div>
         </div>
     )

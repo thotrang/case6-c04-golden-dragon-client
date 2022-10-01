@@ -1,8 +1,7 @@
 import { useSelector } from "react-redux"
 
-function ListUser() {
-    const listUser = useSelector((state) => state.userReducer.users)
-
+function ListUser({users}) {
+    const listUser = users
     return (
         <div>
             <table className="min-w-full leading-normal">
@@ -36,7 +35,7 @@ function ListUser() {
                     </tr>
                 </thead>
                 <tbody>
-                    { listUser.map((user, index) => (
+                    {listUser.map((user, index) => (
                         <tr key={index}>
 
                             <td

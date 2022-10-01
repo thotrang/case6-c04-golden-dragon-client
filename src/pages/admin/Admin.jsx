@@ -9,7 +9,7 @@ function Admin({users}) {
                 <Link to="myProfile">My Profile</Link><br/>
                 <Link to="addStaff">Add Staff</Link><br/>
             </div>
-            <Search users ={users}></Search>
+            <Search list ={users} model = {'user'}></Search>
             <div >
                 <Outlet />
             </div>
