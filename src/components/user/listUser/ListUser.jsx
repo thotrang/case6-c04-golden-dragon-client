@@ -1,16 +1,7 @@
-import { useEffect, useState } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { getAllUser } from "../../../service/userService"
-
+import { useSelector } from "react-redux"
 
 function ListUser() {
-    const [isList, setIsList] = useState(false)
     const listUser = useSelector((state) => state.userReducer.users)
-    const dispatch = useDispatch()
-    useEffect(() => {
-        getAllUser(dispatch)
-        setIsList(true)
-    }, [])
 
     return (
         <div>
@@ -45,7 +36,7 @@ function ListUser() {
                     </tr>
                 </thead>
                 <tbody>
-                    {isList && listUser.map((user, index) => (
+                    { listUser.map((user, index) => (
                         <tr key={index}>
 
                             <td

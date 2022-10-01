@@ -1,11 +1,15 @@
 import {  Link, Outlet } from "react-router-dom";
-function Admin() {
+import Search from "../../components/user/search/Search";
+function Admin({users}) {
     return (
         <div>
             <div>
-                <Link to="listUser">List User</Link>
-                <Link to="listStaff">List Staff</Link>
+                <Link to="listUser">List User</Link><br/>
+                <Link to="listStaff">List Staff</Link><br/>
+                <Link to="myProfile">My Profile</Link><br/>
+                <Link to="addStaff">Add Staff</Link><br/>
             </div>
+            <Search users ={users}></Search>
             <div >
                 <Outlet />
             </div>

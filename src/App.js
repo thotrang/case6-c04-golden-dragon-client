@@ -3,8 +3,19 @@ import ListStaff from "./components/user/listStaff/ListStaff";
 import ListUser from "./components/user/listUser/ListUser";
 import UserDetail from "./components/user/userDetail/UserDetail";
 import Admin from "./pages/admin/Admin";
-function App() {
+import AddStaff from "./components/user/addStaff/AddStaff";
+import { getAllUser ,getAllStaff} from "./service/userService"
+import { useEffect} from "react"
+import { useDispatch, useSelector } from "react-redux"
 
+function App() {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    getAllStaff(dispatch)
+    getAllUser(dispatch)
+}, [])  
+  const listUser = useSelector(state=> state.userReducer.users)
   return (
     <BrowserRouter>
       <Routes>
@@ -12,10 +23,12 @@ function App() {
         <Route path="/register"></Route>
         <Route path="/home"></Route>
         <Route path="/"></Route>
-        <Route path="/admin" element={<Admin></Admin>}>
+        <Route path="/admin" element={<Admin users={listUser}></Admin>}>
             <Route path = "listUser" element = {<ListUser></ListUser>}></Route>
             <Route path = "listStaff" element = {<ListStaff></ListStaff>}></Route>
             <Route path = "detail/:id" element = {<UserDetail></UserDetail>}></Route>
+            <Route path = "myProfile" element = {<UserDetail></UserDetail>}></Route>
+            <Route path = "addStaff" element = {<AddStaff></AddStaff>}></Route>
         </Route>
         <Route path="/accountant"></Route>
       </Routes>

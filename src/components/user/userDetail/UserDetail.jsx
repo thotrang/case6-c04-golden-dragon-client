@@ -5,10 +5,10 @@ import { getDetailUser } from "../../../service/userService"
 
 function UserDetail() {
     const user = useSelector(state => state.userReducer.user)
-    const param = useParams().id;
+    const id = useParams().id;
     const dispatch = useDispatch()
     useEffect(()=>{
-        getDetailUser(dispatch)
+        getDetailUser(id,dispatch)
     })
     return (
         <div>

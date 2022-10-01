@@ -26,8 +26,9 @@ export const getDetailUser = async (id, dispatch) => {
     const res = await customAxios.get(`${baseURL}/user/${id}`)
     dispatch(getDetailUserSlice(res.data))
 }
-export const addStaff = async (dispatch) => {
-    const res = await customAxios.post(`${baseURL}/user`)
+export const addStaff = async (data,dispatch) => {
+    console.log(data);
+    const res = await customAxios.post(`${baseURL}/user`,data)
     dispatch(addStaffSlice(res.data))
 }
 export const deleteUser = async (id, dispatch) => {
