@@ -1,7 +1,13 @@
-import { useSelector } from "react-redux"
+import { useDispatch} from "react-redux"
+import { deleteUser } from "../../../service/userService";
 
-function ListUser({users}) {
-    const listUser = users
+function ListUser({users, model}) {
+    const listUser = users;
+    const dispatch = useDispatch()
+    const handelDelete = (id,index) => {
+        deleteUser(id,index,model,dispatch)
+    }
+
     return (
         <div>
             <table className="min-w-full leading-normal">
@@ -38,7 +44,7 @@ function ListUser({users}) {
                     {listUser.map((user, index) => (
                         <tr key={index}>
 
-                            <td
+                            {/* <td
                                 className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
                             >
                                 <img
@@ -49,11 +55,11 @@ function ListUser({users}) {
                                 {user.name}</td>
                             <td
                                 className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
-                            >{user.roleId.name}</td>
+                            >{user.roleId.name}</td> */}
                             <td
                                 className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
                             >{user.email}</td>
-                            <td
+                            {/* <td
                                 className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
                             >{user.phone}</td>
                             <td
@@ -64,12 +70,12 @@ function ListUser({users}) {
                             >{user.dob}</td>
                             <td
                                 className="px-5 py-5 border-b border-gray-200 bg-white text-sm"
-                            >{user.address}</td>
+                            >{user.address}</td> */}
                             <td className=" text-center px-5 py-3 border-b border-gray-200 bg-white text-sm">
                                 <button className="absolute px-10  bg-green-200 opacity-50 rounded-full row">Edit</button>
                             </td>
                             <td className=" text-center px-5 py-3 border-b border-gray-200 bg-white text-sm">
-                                <button className="absolute  px-5 bg-red-200 opacity-50 rounded-full row">Delete</button>
+                                <button className="absolute  px-5 bg-red-200 opacity-50 rounded-full row" onClick={()=>{handelDelete(user._id,index)}}>Delete</button>
                             </td>
                         </tr>
 

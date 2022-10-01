@@ -28,8 +28,8 @@ function App() {
         <Route path="/home"></Route>
         <Route path="/"></Route>
         <Route path="/admin" element={<Admin users = {listUser}></Admin>}>
-          <Route path="listUser" element={<ListUser users = {listUser}></ListUser>}></Route>
-          <Route path="listStaff" element={<ListUser users = {listStaff}></ListUser>}></Route>
+          <Route path="listUser" element={<ListUser users = {listUser} model = {'user'}></ListUser>}></Route>
+          <Route path="listStaff" element={<ListUser users = {listStaff} model = {'staff'}></ListUser>}></Route>
           <Route path="detail/:id" element={<UserDetail></UserDetail>}></Route>
           <Route path="myProfile" element={<UserDetail></UserDetail>}></Route>
           <Route path="addStaff" element={<AddStaff></AddStaff>}></Route>

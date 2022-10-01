@@ -1,40 +1,45 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    staffs:[],
+    staffs: [],
     users: [],
-    user:{}
+    user: {}
 }
 const userSlice = createSlice({
     name: 'users',
     initialState,
     reducers: {
-        getAllStaffSlice:(state,action) => {
+        getAllStaffSlice: (state, action) => {
             state.staffs = action.payload
         },
         getAllUserSlice: (state, action) => {
             state.users = action.payload
         },
-        getDetailUserSlice:(state, action) => {
+        getDetailUserSlice: (state, action) => {
             state.user = action.payload
         },
-        addStaffSlice:(state, action) => {
-            
+        addStaffSlice: (state, action) => {
         },
-        deleteUserSlice:(state, action) => {
-            
+        deleteUserSlice: (state, action) => {
+            if (action.payload.model == "staff") {
+               state.staffs.splice(action.payload.index,1)
+            }
+            if (action.payload.model == "user") {
+                state.users.splice(action.payload.index,1)
+            }
+
         },
-        updateRoleUserSlice:(state, action) => {
-            
+        updateRoleUserSlice: (state, action) => {
+
         },
-        updateUserSlice:(state, action) => {
-            
+        updateUserSlice: (state, action) => {
+
         },
-        searchUserSlice:(state, action) => {
-            
+        searchUserSlice: (state, action) => {
+
         },
-        searchStaffSlice:(state, action) => {
-            
+        searchStaffSlice: (state, action) => {
+
         }
     }
 })

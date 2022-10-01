@@ -31,9 +31,9 @@ export const addStaff = async (data,dispatch) => {
     const res = await customAxios.post(`${baseURL}/user`,data)
     dispatch(addStaffSlice(res.data))
 }
-export const deleteUser = async (id, dispatch) => {
+export const deleteUser = async (id,index,model, dispatch) => {
     const res = await customAxios.delete(`${baseURL}/user/${id}`)
-    dispatch(deleteUserSlice(res.data))
+    dispatch(deleteUserSlice({id,index,model}))
 }
 export const updateRoleUser = async (id, dispatch) => {
     const res = await customAxios.put(`${baseURL}/user/updateRoleUser/${id}`)
@@ -44,10 +44,10 @@ export const updateUser = async (id, dispatch) => {
     dispatch(updateUserSlice(res.data))
 }
 export const searchUser = async (data, dispatch) => {
-    const res = await customAxios.put(`${baseURL}/user/searchUser,${data}`)
+    const res = await customAxios.get(`${baseURL}/user/searchUser/${data}`)
     dispatch(searchUserSlice(res.data))
 }
 export const searchStaff = async (data, dispatch) => {
-    const res = await customAxios.put(`${baseURL}/user/searchStaff,${data}`)
+    const res = await customAxios.get(`${baseURL}/user/searchStaff/${data}`)
     dispatch(searchStaffSlice(res.data))
 }
