@@ -35,7 +35,10 @@ function LoginForm() {
             .post(`${apiUrl}/login`, loginForm)
             .then(function (response) {
                 console.log(response.data.message);
-                localStorage.setItem(LOCAL_STORAGE_TOKEN_NAME, response.data.accessToken);
+                localStorage.setItem('token', response.data.accessToken);
+                const userInfo = JSON.stringify(response.data.user)
+                localStorage.setItem('userInfo',userInfo)
+                
                 dispatch(getUserInfo(response.data.user))
                 if(response.data.user.roleId.name == "user"){
                     navigate('/home');
